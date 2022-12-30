@@ -2,7 +2,7 @@ import React from 'react';
 import './Cart.css'
 
 const Cart = (props) => {
-    const { cart } = props;
+    const { cart, clearCart, children } = props;
 
     let total = 0;
     let shipping = 0;
@@ -12,7 +12,7 @@ const Cart = (props) => {
     }
     const tax = total * 0.1;
     const grandTotal = total+shipping+tax;
-    console.log(typeof(grandTotal));
+    // console.log(typeof(grandTotal));
     return (
         <div className='cart'>
             <h4>Order Summary in Cart</h4>
@@ -21,6 +21,8 @@ const Cart = (props) => {
             <p>Total Shipping: ${shipping}</p>
             <p>Tax: {tax.toFixed(2)}</p>
             <h5>Grand Total: ${grandTotal.toFixed(2)}</h5>
+            <button onClick={clearCart}>Clear Cart</button>
+            {children}
         </div>
     );
 };
